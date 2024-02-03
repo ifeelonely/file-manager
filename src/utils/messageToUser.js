@@ -1,4 +1,9 @@
-import { EXIT, WELCOME, PATH } from '../constants/messageTypes.js';
+import {
+  EXIT,
+  WELCOME,
+  PATH,
+  INVALID_INPUT,
+} from '../constants/messageTypes.js';
 
 const messageToUser = (mgsType, curDir, msg) => {
   const username = process.env['curUser'];
@@ -11,6 +16,9 @@ const messageToUser = (mgsType, curDir, msg) => {
       break;
     case PATH:
       console.log(`You are currently in ${curDir}`);
+      break;
+    case INVALID_INPUT:
+      console.log('Invalid input');
       break;
     default:
       console.log(msg);

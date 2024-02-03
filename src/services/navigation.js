@@ -25,7 +25,10 @@ export const listFiles = async () => {
     for (let i = 0; i < filesAndDirs.length; i++) {
       const current = filesAndDirs[i];
       if (current.isDirectory())
-        dirs.push({ Name: current.name, Type: 'directory' });
+        dirs.push({
+          Name: current.name,
+          Type: 'directory',
+        });
       else files.push({ Name: current.name, Type: 'file' });
     }
     console.table([...dirs, ...files]);
