@@ -3,6 +3,7 @@ import {
   WELCOME,
   PATH,
   INVALID_INPUT,
+  OPERATION_FAILED
 } from '../constants/messageTypes.js';
 
 const messageToUser = (mgsType, curDir, msg) => {
@@ -19,6 +20,9 @@ const messageToUser = (mgsType, curDir, msg) => {
       break;
     case INVALID_INPUT:
       console.log('Invalid input');
+      break;
+    case OPERATION_FAILED: 
+      console.log('Operation failed')
       break;
     default:
       console.log(msg);

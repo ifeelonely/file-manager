@@ -5,12 +5,13 @@ import {
   changeDirWithPath,
   listFiles,
 } from '../services/navigation.js';
+import { readFile } from '../services/files.js';
 import { messageToUser } from '../utils/messageToUser.js';
 
 //C:\Program Files\Honor
-const handleUserInput = (input) => {
+const handleUserInput = async (input) => {
   const command = input.split(' ');
-  const { up, cd, ls, exit } = cliCommands;
+  const { up, cd, ls, exit, cat } = cliCommands;
 
   switch (command[0]) {
     case up:
@@ -20,7 +21,10 @@ const handleUserInput = (input) => {
       changeDirWithPath(command.splice(1).join(' '));
       break;
     case ls:
-      listFiles();
+      await listFiles();
+      break;
+    case cat:
+      await readFile(command.splice(1).join(' '));
       break;
     case exit:
       messageToUser(EXIT);

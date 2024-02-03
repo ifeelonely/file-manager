@@ -3,4 +3,5 @@ export const cliCommands = {
   cd: 'cd',
   ls: 'ls',
   exit: '.exit',
+  cat: 'cat',
 };
