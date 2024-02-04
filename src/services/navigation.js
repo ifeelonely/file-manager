@@ -1,19 +1,17 @@
 import path from 'path';
 import { messageToUser } from '../utils/messageToUser.js';
-import { INVALID_INPUT, OPERATION_FAILED } from '../constants/errors.js';
+import { INVALID_INPUT, OPERATION_FAILED, PATH } from '../constants/messageTypes.js';
 import { readdir } from 'fs/promises';
 
 export const changeDirUp = () => {
   process.chdir(path.resolve(process.cwd(), '..'));
-  messageToUser('path', process.cwd());
 };
 
 export const changeDirWithPath = (newPath) => {
   try {
     process.chdir(newPath);
-    messageToUser('path', process.cwd());
   } catch (error) {
-    messageToUser('', '', INVALID_INPUT);
+    messageToUser(INVALID_INPUT);
   }
 };
 
