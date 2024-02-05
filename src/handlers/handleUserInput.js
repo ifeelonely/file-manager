@@ -15,10 +15,11 @@ import {
 } from '../services/files.js';
 import { messageToUser } from '../utils/messageToUser.js';
 import { parseTwoPaths } from '../utils/parseTwoPaths.js';
+import { handleOsCommand } from './handleOsCommand.js';
 
 const handleUserInput = async (input) => {
   const [command, ...paths] = input.split(' ');
-  const { up, cd, ls, exit, cat, add, rn, cp, mv, rm } = cliCommands;
+  const { up, cd, ls, exit, cat, add, rn, cp, mv, rm, os } = cliCommands;
   switch (command) {
     case up:
       changeDirUp();
@@ -49,6 +50,9 @@ const handleUserInput = async (input) => {
       break;
     case rm:
       await deleteFile(paths.join(' '));
+      break;
+    case os:
+      handleOsCommand(paths.join(' '));
       break;
     case exit:
       messageToUser(EXIT);

@@ -9,4 +9,13 @@ export const cliCommands = {
   cp: 'cp',
   mv: 'mv',
   rm: 'rm',
+  os: 'os',
+};
+
+export const osArgs = {
+  EOL: 'EOL',
+  cpus: 'cpus',
+  homedir: 'homedir',
+  username: 'username',
+  architecture: 'architecture',
 };
