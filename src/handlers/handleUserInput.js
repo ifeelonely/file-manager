@@ -17,10 +17,26 @@ import { messageToUser } from '../utils/messageToUser.js';
 import { parseTwoPaths } from '../utils/parseTwoPaths.js';
 import { handleOsCommand } from './handleOsCommand.js';
 import { calcHash } from '../services/hash.js';
+import { compressFile } from '../services/compressDecompress.js';
 
 const handleUserInput = async (input) => {
   const [command, ...paths] = input.split(' ');
-  const { up, cd, ls, exit, cat, add, rn, cp, mv, rm, os, hash } = cliCommands;
+  const {
+    up,
+    cd,
+    ls,
+    exit,
+    cat,
+    add,
+    rn,
+    cp,
+    mv,
+    rm,
+    os,
+    hash,
+    compress,
+    decompress,
+  } = cliCommands;
   switch (command) {
     case up:
       changeDirUp();
@@ -57,6 +73,14 @@ const handleUserInput = async (input) => {
       break;
     case hash:
       await calcHash(paths.join(' '));
+      break;
+    case compress:
+      const [pathTofile, pathToDest] = parseTwoPaths(paths.join(' '));
+      compressFile(pathTofile, pathToDest);
+      break;
+    case decompress:
+      const [pathTofileDe, pathToDestDe] = parseTwoPaths(paths.join(' '));
+      compressFile(pathTofileDe, pathToDestDe);
       break;
     case exit:
       messageToUser(EXIT);

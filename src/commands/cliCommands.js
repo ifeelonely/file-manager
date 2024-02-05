@@ -10,7 +10,9 @@ export const cliCommands = {
   mv: 'mv',
   rm: 'rm',
   os: 'os',
-  hash: 'hash'
+  hash: 'hash',
+  compress: 'compress',
+  decompress: 'decompress',
 };
 
 export const osArgs = {

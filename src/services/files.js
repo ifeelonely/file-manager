@@ -29,6 +29,10 @@ export const renameFile = async (oldPath, newFileName) => {
 };
 
 export const copyFile = async (oldPath, newPath) => {
+  if (!oldPath || !newPath) {
+    messageToUser(INVALID_INPUT);
+    return;
+  }
   const destinationFile = path.basename(oldPath);
   const readStream = createReadStream(oldPath);
   const writeStream = createWriteStream(path.join(newPath, destinationFile));
@@ -37,7 +41,7 @@ export const copyFile = async (oldPath, newPath) => {
   writeStream.on('error', (err) => messageToUser(OPERATION_FAILED));
   readStream.pipe(writeStream);
 };
-//D:\Диплом\материалы\jopa.txt D:\Диплом\материалы
+
 export const moveFile = async (oldPath, newPath) => {
   await copyFile(oldPath, newPath);
   try {
