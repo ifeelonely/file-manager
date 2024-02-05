@@ -16,10 +16,11 @@ import {
 import { messageToUser } from '../utils/messageToUser.js';
 import { parseTwoPaths } from '../utils/parseTwoPaths.js';
 import { handleOsCommand } from './handleOsCommand.js';
+import { calcHash } from '../services/hash.js';
 
 const handleUserInput = async (input) => {
   const [command, ...paths] = input.split(' ');
-  const { up, cd, ls, exit, cat, add, rn, cp, mv, rm, os } = cliCommands;
+  const { up, cd, ls, exit, cat, add, rn, cp, mv, rm, os, hash } = cliCommands;
   switch (command) {
     case up:
       changeDirUp();
@@ -53,6 +54,9 @@ const handleUserInput = async (input) => {
       break;
     case os:
       handleOsCommand(paths.join(' '));
+      break;
+    case hash:
+      await calcHash(paths.join(' '));
       break;
     case exit:
       messageToUser(EXIT);

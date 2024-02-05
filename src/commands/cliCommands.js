@@ -10,6 +10,7 @@ export const cliCommands = {
   mv: 'mv',
   rm: 'rm',
   os: 'os',
+  hash: 'hash'
 };
 
 export const osArgs = {
